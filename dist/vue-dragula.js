@@ -3072,11 +3072,12 @@ var require$$0$3 = Object.freeze({
 	function plugin(Vue) {
 	  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-	  if (plugin.installed) {
+	  if (process.env.NODE_ENV !== 'production' && plugin.installed) {
 	    console.warn('[vue-dragula] already installed.');
 	  }
-
-	  console.log('Add Dragula plugin:', options);
+	  if(process.env.NODE_ENV !== 'production') {
+	     console.log('Add Dragula plugin:', options);
+	  }
 	  VueDragula(Vue, options);
 	}
 
